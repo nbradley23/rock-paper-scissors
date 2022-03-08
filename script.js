@@ -16,6 +16,8 @@ function rpsRound(playerSelection, computerSelection) {
         return playerRock(computerSelection);
     } else if (playerSelection === 'paper') {
         return playerPaper(computerSelection);
+    } else {
+        return playerScissors(computerSelection);
     }
 
 
@@ -53,6 +55,31 @@ function playerPaper (computerSelection) {
         return "You lose!"
     }
 }
+
+
+function playerScissors (computerSelection) {
+    if (computerSelection === 'paper') {
+        console.log(`Player chose: scissors`);
+        console.log(`Computer chose: ${computerSelection}`);
+        return "You are the winner!"
+    } else if (computerSelection === 'scissors') {
+        console.log(`Player chose: scissors`);
+        console.log(`Computer chose: ${computerSelection}`);
+        return "You tied please go again"
+    } else {
+        console.log(`Player chose: scissors`);
+        console.log(`Computer chose: ${computerSelection}`);
+        return "You lose!"
+    }
+}
+
+
+
+
+
+
+
+
 
 
 
