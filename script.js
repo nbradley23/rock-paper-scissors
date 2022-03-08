@@ -2,6 +2,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let combinedScore = `${playerScore} : ${computerScore}`
+let round = 0;
 
 //Random Computer R/P/S Selection
 function computerPlay() {
@@ -30,19 +31,21 @@ function rpsRound(playerSelection, computerSelection) {
 //Plays game of R/P/S, best of five
 function game() {
     while (playerScore < 5 && computerScore < 5) {
-        rpsRound(playerPlay(), computerPlay())
-
+        playerSelection = prompt("Please enter your choice: Rock, Paper, or Scissors")
+        rpsRound(playerSelection, computerPlay())
     }
 
     if (playerScore === 5) {
         playerScore = 0;
         computerScore = 0;
+        round = 0;
         console.log('Player has won the game!!')
     }
 
     if (computerScore === 5) {
         playerScore = 0;
         computerScore = 0;
+        round = 0;
         console.log('Computer has won the game!!')
     }
 }
@@ -50,19 +53,22 @@ function game() {
 //Function for when player chooses Rock
 function playerRock(computerSelection) {
     if (computerSelection === 'paper') {
+        newRound()
         console.log(`Player chose: rock`);
         console.log(`Computer chose: ${computerSelection}`);
         computerWin();
-        return "You lose!"
+        console.log("You lost the round!")
     } else if (computerSelection === "rock") {
+        newRound()
         console.log(`Player chose: rock`);
         console.log(`Computer chose: ${computerSelection}`);
-        return "You tied please go again"
+        console.log("You tied please go again")
     } else {
+        newRound()
         console.log(`Player chose: rock`);
         console.log(`Computer chose: ${computerSelection}`);
         playerWin();
-        return "You are the winner!"
+        console.log("You are the winner of the round!")
     }
 }
 
@@ -70,38 +76,44 @@ function playerRock(computerSelection) {
 //Function for when player chooses Paper
 function playerPaper(computerSelection) {
     if (computerSelection === 'rock') {
+        newRound()
         console.log(`Player chose: paper`);
         console.log(`Computer chose: ${computerSelection}`);
         playerWin();
-        return "You are the winner!"
+        console.log("You are the winner of the round!")
     } else if (computerSelection === 'paper') {
+        newRound()
         console.log(`Player chose: paper`);
         console.log(`Computer chose: ${computerSelection}`);
-        return "You tied please go again"
+        console.log("You tied please go again")
     } else {
+        newRound()
         console.log(`Player chose: paper`);
         console.log(`Computer chose: ${computerSelection}`);
         computerWin();
-        return "You lose!"
+        console.log("You lost the round!")
     }
 }
 
 //Function for when player chooses Scissors
 function playerScissors(computerSelection) {
     if (computerSelection === 'paper') {
+        newRound()
         console.log(`Player chose: scissors`);
         console.log(`Computer chose: ${computerSelection}`);
         playerWin();
-        return "You are the winner!"
+        console.log("You are the winner of the round!")
     } else if (computerSelection === 'scissors') {
+        newRound()
         console.log(`Player chose: scissors`);
         console.log(`Computer chose: ${computerSelection}`);
-        return "You tied please go again"
+        console.log("You tied please go again")
     } else {
+        newRound()
         console.log(`Player chose: scissors`);
         console.log(`Computer chose: ${computerSelection}`);
         computerWin();
-        return "You lose!"
+        console.log("You lost the round!")
     }
 }
 
@@ -118,7 +130,10 @@ function computerWin() {
 }
 
 
-
+function newRound() {
+    round++
+    console.log(`It's round: ${round}`)
+}
 
 
 
