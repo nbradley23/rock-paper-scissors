@@ -1,15 +1,15 @@
+//Score Keeping
+let playerScore = 0
+let computerScore = 0
+let combinedScore = `${playerScore} : ${computerScore}`
+
+//Random Computer R/P/S Selection
 function computerPlay() {
     let rpsArray = ['rock', 'paper', 'scissors']
     return rpsArray[Math.floor(Math.random() * 3)]
 }
 
-//create function that takes two parameters player and computer selections
-//create conditionals to determine who wins the round
-//return string that declares the winner of the round
-
-let computerSelection = computerPlay();
-let playerSelection = "";
-
+//Round of Rock, Paper, Scissors
 function rpsRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === 'rock') {
@@ -24,6 +24,8 @@ function rpsRound(playerSelection, computerSelection) {
 
 }
 
+
+//Function for when player chooses Rock
 function playerRock(computerSelection) {
     if (computerSelection === 'paper') {
         console.log(`Player chose: rock`);
@@ -40,7 +42,9 @@ function playerRock(computerSelection) {
     }
 }
 
-function playerPaper (computerSelection) {
+
+//Function for when player chooses Paper
+function playerPaper(computerSelection) {
     if (computerSelection === 'rock') {
         console.log(`Player chose: paper`);
         console.log(`Computer chose: ${computerSelection}`);
@@ -56,8 +60,8 @@ function playerPaper (computerSelection) {
     }
 }
 
-
-function playerScissors (computerSelection) {
+//Function for when player chooses Scissors
+function playerScissors(computerSelection) {
     if (computerSelection === 'paper') {
         console.log(`Player chose: scissors`);
         console.log(`Computer chose: ${computerSelection}`);
