@@ -12,16 +12,29 @@ let playerSelection = "";
 
 function rpsRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
-    if (playerSelection === "rock" && (computerSelection === 'paper' || computerSelection === 'scissors')) {
-        console.log(`Player chose: ${playerSelection}`);
-        console.log(`Computer chose: ${computerSelection}`);
-        return "You are the winner!!!"
-    } else if (playerSelection === computerSelection) {
-        console.log(`Player chose: ${playerSelection}`);
-        console.log(`Computer chose: ${computerSelection}`);
-        return "You tied please go again"
+    if (playerSelection === 'rock') {
+        return playerRock(computerSelection);
     }
 
 
 
 }
+
+function playerRock(computerSelection) {
+    if (computerSelection === 'paper') {
+        console.log(`Player chose: rock`);
+        console.log(`Computer chose: ${computerSelection}`);
+        return "You lose!"
+    } else if (computerSelection === "rock") {
+        console.log(`Player chose: rock`);
+        console.log(`Computer chose: ${computerSelection}`);
+        return "You tied please go again"
+    } else {
+        console.log(`Player chose: rock`);
+        console.log(`Computer chose: ${computerSelection}`);
+        return "You are the winner!"
+    }
+}
+
+
+
