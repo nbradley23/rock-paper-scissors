@@ -14,6 +14,8 @@ function rpsRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === 'rock') {
         return playerRock(computerSelection);
+    } else if (playerSelection === 'paper') {
+        return playerPaper(computerSelection);
     }
 
 
@@ -33,6 +35,22 @@ function playerRock(computerSelection) {
         console.log(`Player chose: rock`);
         console.log(`Computer chose: ${computerSelection}`);
         return "You are the winner!"
+    }
+}
+
+function playerPaper (computerSelection) {
+    if (computerSelection === 'rock') {
+        console.log(`Player chose: paper`);
+        console.log(`Computer chose: ${computerSelection}`);
+        return "You are the winner!"
+    } else if (computerSelection === 'paper') {
+        console.log(`Player chose: paper`);
+        console.log(`Computer chose: ${computerSelection}`);
+        return "You tied please go again"
+    } else {
+        console.log(`Player chose: paper`);
+        console.log(`Computer chose: ${computerSelection}`);
+        return "You lose!"
     }
 }
 
