@@ -2,6 +2,17 @@
 let playerScore = 0;
 let computerScore = 0;
 let round = 0;
+let playerSelection = '';
+let roundP = document.createElement('p');
+let playerSelectionP = document.createElement('p');
+let computerSelectionP = document.createElement('p');
+let scoreP = document.createElement('p');
+let winOrLoseRound = document.createElement('p');
+let gameWinner = document.createElement('p');
+let resultsDiv = document.querySelector('.results');
+
+
+const rpsBtns = document.querySelectorAll('.btn');
 
 //Random Computer R/P/S Selection
 function computerPlay() {
@@ -36,29 +47,31 @@ function rpsRound(playerSelection, computerSelection) {
 
 
 //Plays game of R/P/S, best of five
-function game() {
-    while (playerScore < 5 && computerScore < 5) {
-        playerSelection = prompt("Please enter your choice: Rock, Paper, or Scissors");
-        rpsRound(playerSelection, computerPlay());
+function game(playerSelection) {
+    // while (playerScore < 5 && computerScore < 5) {
+    // playerSelection = prompt("Please enter your choice: Rock, Paper, or Scissors");
+    rpsRound(playerSelection, computerPlay());
 
 
 
 
-        if (playerScore === 5) {
-            playerScore = 0;
-            computerScore = 0;
-            round = 0;
-            console.log('Player has won the game!!');
-        }
+    if (playerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
+        round = 0;
+        gameWinner.innerText = 'Player has won the game!!';
+        resultsDiv.appendChild(gameWinner);
+    }
 
-        if (computerScore === 5) {
-            playerScore = 0;
-            computerScore = 0;
-            round = 0;
-            console.log('Computer has won the game!!');
-        }
+    if (computerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
+        round = 0;
+        gameWinner.innerText = 'Computer has won the game!!';
+        resultsDiv.appendChild(gameWinner);
     }
 }
+// }
 
 //Function for when player chooses Rock
 function playerRock(computerSelection) {
@@ -112,45 +125,61 @@ function playerScissors(computerSelection) {
 //When player wins, adds 1 to their score and prints the combined score
 function playerWinScore() {
     ++playerScore;
-    console.log(`Score: ${playerScore} to ${computerScore}`);
-    console.log(" ");
+    scoreP.innerText = `Score: ${playerScore} to ${computerScore}`;
+    resultsDiv.appendChild(scoreP)
 }
 
 //When computer wins, adds 1 to its score and prints the combined score
 function computerWinScore() {
     ++computerScore;
-    console.log(`Score: ${playerScore} to ${computerScore}`);
-    console.log(" ");
+    scoreP.innerText = `Score: ${playerScore} to ${computerScore}`;
+    resultsDiv.appendChild(scoreP)
 }
 
 
 function newRound() {
+    scoreP.innerText = ""
+    gameWinner.innerText = ""
     round++;
-    console.log(`It's round: ${round}`);
+    roundP.innerText = `It's round: ${round}`;
+    resultsDiv.appendChild(roundP);
 }
 
 function roundWon(playerSelection, computerSelection) {
-    console.log(`Player chose: ${playerSelection}`);
-    console.log(`Computer chose: ${computerSelection}`);
-    console.log("You are the winner of the round!");
+    playerSelectionP.innerText = `Player chose: ${playerSelection}`;
+    resultsDiv.appendChild(playerSelectionP);
+    computerSelectionP.innerText = `Computer chose: ${computerSelection}`;
+    resultsDiv.appendChild(computerSelectionP);
+    winOrLoseRound.innerText = "You are the winner of the round!";
+    resultsDiv.appendChild(winOrLoseRound);
 }
 
 function roundLost(playerSelection, computerSelection) {
-    console.log(`Player chose: ${playerSelection}`);
-    console.log(`Computer chose: ${computerSelection}`);
-    console.log("You lost the round!");
+    playerSelectionP.innerText = `Player chose: ${playerSelection}`;
+    resultsDiv.appendChild(playerSelectionP);
+    computerSelectionP.innerText = `Computer chose: ${computerSelection}`;
+    resultsDiv.appendChild(computerSelectionP);
+    winOrLoseRound.innerText = "You lost the round!";
+    resultsDiv.appendChild(winOrLoseRound);
 }
 
 function roundTied(playerSelection, computerSelection) {
-    console.log(`Player chose: ${playerSelection}`);
-    console.log(`Computer chose: ${computerSelection}`);
-    console.log("You tied please go again");
-    console.log(" ");
+    playerSelectionP.innerText = `Player chose: ${playerSelection}`;
+    resultsDiv.appendChild(playerSelectionP);
+    computerSelectionP.innerText = `Computer chose: ${computerSelection}`;
+    resultsDiv.appendChild(computerSelectionP);
+    winOrLoseRound.innerText = "You tied please go again";
+    resultsDiv.appendChild(winOrLoseRound);
 }
 
 
+rpsBtns.forEach(btn => {
+    btn.addEventListener('click', runGame)
+})
 
 
 
-
-
+function runGame(e) {
+    playerSelection = e.target.innerText.toLowerCase();
+    game(playerSelection);
+}
